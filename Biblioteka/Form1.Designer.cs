@@ -578,7 +578,6 @@
             // 
             // регистрацияToolStripMenuItem
             // 
-            this.регистрацияToolStripMenuItem.Enabled = false;
             this.регистрацияToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("регистрацияToolStripMenuItem.Image")));
             this.регистрацияToolStripMenuItem.Name = "регистрацияToolStripMenuItem";
             this.регистрацияToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
