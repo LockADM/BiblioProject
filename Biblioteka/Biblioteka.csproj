@@ -131,6 +131,12 @@
     <Compile Include="uchenikForm.Designer.cs">
       <DependentUpon>uchenikForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddNewBookForm.resx">
       <DependentUpon>AddNewBookForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +175,9 @@
     </Content>
     <EmbeddedResource Include="uchenikForm.resx">
       <DependentUpon>uchenikForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BiblioBDDataSet.xsc">
       <DependentUpon>BiblioBDDataSet.xsd</DependentUpon>

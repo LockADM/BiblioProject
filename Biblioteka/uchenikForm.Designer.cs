@@ -341,7 +341,10 @@
             this.ClientSize = new System.Drawing.Size(585, 585);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "uchenikForm";
             this.Text = "Персональная форма ученика";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.uchenikForm_FormClosing);

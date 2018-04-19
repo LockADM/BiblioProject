@@ -76,7 +76,8 @@ namespace Biblioteka
                     очиститьТаблицуToolStripMenuItem.Enabled = true;
                     экспортToolStripMenuItem.Enabled = true;
                     добавитьУченикаToolStripMenuItem.Enabled = true;
-                    toolStripStatusLabel5.Text += "Вы авторизовались как :Администратор";
+                    таблицыАутентификацииToolStripMenuItem.Enabled = true;
+                    toolStripStatusLabel5.Text = "Вы авторизовались как :Администратор";
                 }
                 if(TypeOfAccount == 0)
                 {
@@ -101,12 +102,12 @@ namespace Biblioteka
                         UchForm.ShowDialog();
                     }
                     catch (InvalidOperationException) { MessageBox.Show("Данного ученика нет в общей базе данных, обратитесь к сотруднику библиотеки!");
-                        using (AutorizationForm AForm = new AutorizationForm())
-                        {
+                        AutorizationForm AForm = new AutorizationForm();
+                        
                             TypeOfAccount = 4;
                             AForm.Owner = this;
                             AForm.ShowDialog();
-                        }
+                        
                     }
                    
                 }
@@ -399,6 +400,14 @@ namespace Biblioteka
             string _maxDate = Convert.ToDateTime(toDTP2.Value).ToString("MM.dd.yyyy"); // Перевод местной даты в интернациональный формат
             string _minDate = Convert.ToDateTime(fromDTP1.Value).ToString("MM.dd.yyyy"); //
             uchenikiBindingSource.Filter = "Vozrast >= #" + _minDate + "# AND Vozrast <= #" + _maxDate + "#";
+        }
+
+        private void таблицыАутентификацииToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (UsersForm userForm = new UsersForm())
+            {
+                userForm.ShowDialog();
+            }
         }
     }
 }
