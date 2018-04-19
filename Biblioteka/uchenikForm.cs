@@ -26,6 +26,7 @@ namespace Biblioteka
             Form1 main = this.Owner as Form1;
             this.biblioKartTableAdapter.FillByUchenikBibliokard(biblioBDDataSet.BiblioKart, main.ID_Uchenika);
             dataGridView1.DataSource = BKBS;
+            
 
         }
 
@@ -34,26 +35,25 @@ namespace Biblioteka
             Form1 main = this.Owner as Form1;
             DateTime DataBegin = DateTime.Now.Date;
             DateTime DataEnd = new DateTime();
-            if (comboBox1.SelectedIndex == 0)
+            if (comboBox2.SelectedIndex == 0)
             {
                 DataEnd = DataBegin.AddDays(7);
             }
-            if (comboBox1.SelectedIndex == 1)
+            if (comboBox2.SelectedIndex == 1)
             {
                 DataEnd = DataBegin.AddDays(14);
             }
-            if (comboBox1.SelectedIndex == 2)
+            if (comboBox2.SelectedIndex == 2)
             {
                 DataEnd = DataBegin.AddDays(30);
             }
-            if (comboBox1.SelectedIndex == 3)
+            if (comboBox2.SelectedIndex == 3)
             {
                 DataEnd = DataBegin.AddDays(170);
             }
             int Nppcount = (int)this.biblioKartTableAdapter.GetIDCount();
             try
             {
-
                 this.biblioKartTableAdapter.Insert(Nppcount + 1, main.ID_Uchenika, (int)comboBox1.SelectedValue, DataBegin, DataEnd, (int)numericUpDown1.Value, false);
                 this.knigiTableAdapter.UpdateTrigger(Convert.ToInt32(numericUpDown1.Text), (int)comboBox1.SelectedValue);
             }
@@ -67,6 +67,27 @@ namespace Biblioteka
         {
             Form1 main = this.Owner as Form1;
             main.TypeOfAccount = 4;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 main = this.Owner as Form1;
+            this.biblioKartTableAdapter.FillByUchenikBibliokard(biblioBDDataSet.BiblioKart, main.ID_Uchenika);
+            dataGridView1.DataSource = BKBS;
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                if (Convert.ToBoolean(dataGridView1.CurrentRow.Cells[6].Value) == false && Convert.ToDateTime(dataGridView1.CurrentRow.Cells[4].Value) > DateTime.Now.Date)
+                {
+                    label4.Text = "Имеется задолжность по выбранной позиции";
+                    label4.ForeColor = Color.Red;
+                }
+                else { label4.Text = "Задолжности по выбранной позиции нет"; label4.ForeColor = Color.Green; }
+            }
+
         }
     }
 }

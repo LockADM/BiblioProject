@@ -43,7 +43,7 @@ namespace Biblioteka
                     int hashPass = passwordTextBox.Text.GetHashCode();
                     this.bibliotekarTableAdapter.Insert(lastId + 1, fIOTextBox.Text, data_RojdeniyaDateTimePicker.Value.Date, loginTextBox.Text, hashPass, comboBox1.SelectedIndex.ToString());
                     this.tableAdapterManager.UpdateAll(biblioBDDataSet);
-                    MessageBox.Show("Новый пользователь добавлен!");
+                    MessageBox.Show("Новый Администратор успешно добавлен!");
                 }
                 else { MessageBox.Show("Недостаточно прав для добавления администратора! Выберете другой тип учетной записи!"); }
             }

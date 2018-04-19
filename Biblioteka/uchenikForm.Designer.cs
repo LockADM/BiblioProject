@@ -32,6 +32,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.BKBS = new System.Windows.Forms.BindingSource(this.components);
+            this.biblioBDDataSet = new Biblioteka.BiblioBDDataSet();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
@@ -41,30 +43,34 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.KnigiBS = new System.Windows.Forms.BindingSource(this.components);
-            this.biblioBDDataSet = new Biblioteka.BiblioBDDataSet();
             this.knigiTableAdapter = new Biblioteka.BiblioBDDataSetTableAdapters.KnigiTableAdapter();
-            this.BKBS = new System.Windows.Forms.BindingSource(this.components);
             this.biblioKartTableAdapter = new Biblioteka.BiblioBDDataSetTableAdapters.BiblioKartTableAdapter();
             this.tableAdapterManager1 = new Biblioteka.BiblioBDDataSetTableAdapters.TableAdapterManager();
             this.nppDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iDUchenikaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDKnigiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDKnigiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataVzyalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataSdalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kolVoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BKBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KnigiBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BKBS)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox4);
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Location = new System.Drawing.Point(16, 16);
@@ -103,6 +109,17 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(519, 242);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // BKBS
+            // 
+            this.BKBS.DataMember = "BiblioKart";
+            this.BKBS.DataSource = this.biblioBDDataSet;
+            // 
+            // biblioBDDataSet
+            // 
+            this.biblioBDDataSet.DataSetName = "BiblioBDDataSet";
+            this.biblioBDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox2
             // 
@@ -208,19 +225,9 @@
             this.KnigiBS.DataMember = "Knigi";
             this.KnigiBS.DataSource = this.biblioBDDataSet;
             // 
-            // biblioBDDataSet
-            // 
-            this.biblioBDDataSet.DataSetName = "BiblioBDDataSet";
-            this.biblioBDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // knigiTableAdapter
             // 
             this.knigiTableAdapter.ClearBeforeFill = true;
-            // 
-            // BKBS
-            // 
-            this.BKBS.DataMember = "BiblioKart";
-            this.BKBS.DataSource = this.biblioBDDataSet;
             // 
             // biblioKartTableAdapter
             // 
@@ -242,6 +249,7 @@
             this.nppDataGridViewTextBoxColumn.DataPropertyName = "Npp";
             this.nppDataGridViewTextBoxColumn.HeaderText = "№ п/п";
             this.nppDataGridViewTextBoxColumn.Name = "nppDataGridViewTextBoxColumn";
+            this.nppDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // iDUchenikaDataGridViewTextBoxColumn
             // 
@@ -249,13 +257,21 @@
             this.iDUchenikaDataGridViewTextBoxColumn.DataPropertyName = "ID_Uchenika";
             this.iDUchenikaDataGridViewTextBoxColumn.HeaderText = "№ Ученика";
             this.iDUchenikaDataGridViewTextBoxColumn.Name = "iDUchenikaDataGridViewTextBoxColumn";
+            this.iDUchenikaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDUchenikaDataGridViewTextBoxColumn.Visible = false;
             // 
             // iDKnigiDataGridViewTextBoxColumn
             // 
             this.iDKnigiDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.iDKnigiDataGridViewTextBoxColumn.DataPropertyName = "ID_Knigi";
+            this.iDKnigiDataGridViewTextBoxColumn.DataSource = this.KnigiBS;
+            this.iDKnigiDataGridViewTextBoxColumn.DisplayMember = "Name";
             this.iDKnigiDataGridViewTextBoxColumn.HeaderText = "Книга";
             this.iDKnigiDataGridViewTextBoxColumn.Name = "iDKnigiDataGridViewTextBoxColumn";
+            this.iDKnigiDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDKnigiDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.iDKnigiDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.iDKnigiDataGridViewTextBoxColumn.ValueMember = "ID_Knigi";
             // 
             // dataVzyalDataGridViewTextBoxColumn
             // 
@@ -263,6 +279,7 @@
             this.dataVzyalDataGridViewTextBoxColumn.DataPropertyName = "Data_Vzyal";
             this.dataVzyalDataGridViewTextBoxColumn.HeaderText = "Когда взял";
             this.dataVzyalDataGridViewTextBoxColumn.Name = "dataVzyalDataGridViewTextBoxColumn";
+            this.dataVzyalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dataSdalDataGridViewTextBoxColumn
             // 
@@ -270,6 +287,7 @@
             this.dataSdalDataGridViewTextBoxColumn.DataPropertyName = "Data_Sdal";
             this.dataSdalDataGridViewTextBoxColumn.HeaderText = "Когда нужно сдавать";
             this.dataSdalDataGridViewTextBoxColumn.Name = "dataSdalDataGridViewTextBoxColumn";
+            this.dataSdalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // kolVoDataGridViewTextBoxColumn
             // 
@@ -277,6 +295,7 @@
             this.kolVoDataGridViewTextBoxColumn.DataPropertyName = "Kol_Vo";
             this.kolVoDataGridViewTextBoxColumn.HeaderText = "Количество";
             this.kolVoDataGridViewTextBoxColumn.Name = "kolVoDataGridViewTextBoxColumn";
+            this.kolVoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // statusDataGridViewCheckBoxColumn
             // 
@@ -284,7 +303,37 @@
             this.statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
             this.statusDataGridViewCheckBoxColumn.HeaderText = "Status";
             this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
+            this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
             this.statusDataGridViewCheckBoxColumn.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(440, 235);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(98, 32);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Обновить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Location = new System.Drawing.Point(220, 30);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(312, 199);
+            this.groupBox4.TabIndex = 4;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Статус:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(108, 51);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 17);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "StatusLable";
             // 
             // uchenikForm
             // 
@@ -301,12 +350,14 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BKBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KnigiBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BKBS)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -332,10 +383,13 @@
         private BiblioBDDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nppDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDUchenikaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDKnigiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn iDKnigiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataVzyalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataSdalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kolVoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn statusDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label4;
     }
 }
