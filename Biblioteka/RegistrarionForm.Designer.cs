@@ -221,7 +221,7 @@
             // AddBttn
             // 
             this.AddBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.AddBttn.Location = new System.Drawing.Point(189, 6);
+            this.AddBttn.Location = new System.Drawing.Point(189, 3);
             this.AddBttn.Name = "AddBttn";
             this.AddBttn.Size = new System.Drawing.Size(99, 44);
             this.AddBttn.TabIndex = 0;

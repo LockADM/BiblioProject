@@ -34,24 +34,23 @@
             System.Windows.Forms.Label klassLabel;
             System.Windows.Forms.Label polLabel;
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.CloseBttn = new System.Windows.Forms.Button();
-            this.vozrastNumeric = new System.Windows.Forms.NumericUpDown();
             this.AddBttn = new System.Windows.Forms.Button();
             this.klassTextBox = new System.Windows.Forms.MaskedTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.fIOTextBox = new System.Windows.Forms.TextBox();
-            this.uchenikiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.biblioBDDataSet = new Biblioteka.BiblioBDDataSet();
-            this.tableAdapterManager = new Biblioteka.BiblioBDDataSetTableAdapters.TableAdapterManager();
+            this.uchenikibindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.uchenikiTableAdapter = new Biblioteka.BiblioBDDataSetTableAdapters.UchenikiTableAdapter();
+            this.tableAdapterManager1 = new Biblioteka.BiblioBDDataSetTableAdapters.TableAdapterManager();
             fIOLabel = new System.Windows.Forms.Label();
             vozrastLabel = new System.Windows.Forms.Label();
             klassLabel = new System.Windows.Forms.Label();
             polLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vozrastNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uchenikiBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uchenikibindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // fIOLabel
@@ -92,8 +91,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.CloseBttn);
-            this.groupBox1.Controls.Add(this.vozrastNumeric);
             this.groupBox1.Controls.Add(this.AddBttn);
             this.groupBox1.Controls.Add(this.klassTextBox);
             this.groupBox1.Controls.Add(this.comboBox1);
@@ -111,6 +110,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Личные данные";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(7, 94);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker1.TabIndex = 12;
+            // 
             // CloseBttn
             // 
             this.CloseBttn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -121,23 +127,6 @@
             this.CloseBttn.Text = "Закрыть";
             this.CloseBttn.UseVisualStyleBackColor = true;
             this.CloseBttn.Click += new System.EventHandler(this.CloseBttn_Click);
-            // 
-            // vozrastNumeric
-            // 
-            this.vozrastNumeric.Location = new System.Drawing.Point(7, 94);
-            this.vozrastNumeric.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.vozrastNumeric.Name = "vozrastNumeric";
-            this.vozrastNumeric.Size = new System.Drawing.Size(120, 23);
-            this.vozrastNumeric.TabIndex = 11;
-            this.vozrastNumeric.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // AddBttn
             // 
@@ -172,7 +161,6 @@
             // 
             // fIOTextBox
             // 
-            this.fIOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.uchenikiBindingSource, "FIO", true));
             this.fIOTextBox.Location = new System.Drawing.Point(7, 40);
             this.fIOTextBox.MaxLength = 20;
             this.fIOTextBox.Multiline = true;
@@ -180,29 +168,29 @@
             this.fIOTextBox.Size = new System.Drawing.Size(213, 31);
             this.fIOTextBox.TabIndex = 3;
             // 
-            // uchenikiBindingSource
-            // 
-            this.uchenikiBindingSource.DataMember = "Ucheniki";
-            this.uchenikiBindingSource.DataSource = this.biblioBDDataSet;
-            // 
             // biblioBDDataSet
             // 
             this.biblioBDDataSet.DataSetName = "BiblioBDDataSet";
             this.biblioBDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // tableAdapterManager
+            // uchenikibindingSource
             // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.BiblioKartTableAdapter = null;
-            this.tableAdapterManager.BibliotekarTableAdapter = null;
-            this.tableAdapterManager.KnigiTableAdapter = null;
-            this.tableAdapterManager.UchenikiTableAdapter = this.uchenikiTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Biblioteka.BiblioBDDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.ZakazTableAdapter = null;
+            this.uchenikibindingSource.DataMember = "Ucheniki";
+            this.uchenikibindingSource.DataSource = this.biblioBDDataSet;
             // 
             // uchenikiTableAdapter
             // 
             this.uchenikiTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.BiblioKartTableAdapter = null;
+            this.tableAdapterManager1.BibliotekarTableAdapter = null;
+            this.tableAdapterManager1.KnigiTableAdapter = null;
+            this.tableAdapterManager1.UchenikiTableAdapter = this.uchenikiTableAdapter;
+            this.tableAdapterManager1.UpdateOrder = Biblioteka.BiblioBDDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager1.ZakazTableAdapter = null;
             // 
             // AddUchenikForm
             // 
@@ -221,9 +209,8 @@
             this.Load += new System.EventHandler(this.AddUchenikForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vozrastNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uchenikiBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uchenikibindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -232,14 +219,14 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private BiblioBDDataSet biblioBDDataSet;
-        private System.Windows.Forms.BindingSource uchenikiBindingSource;
-        private BiblioBDDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox fIOTextBox;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button AddBttn;
         private System.Windows.Forms.Button CloseBttn;
-        private BiblioBDDataSetTableAdapters.UchenikiTableAdapter uchenikiTableAdapter;
         private System.Windows.Forms.MaskedTextBox klassTextBox;
-        private System.Windows.Forms.NumericUpDown vozrastNumeric;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.BindingSource uchenikibindingSource;
+        private BiblioBDDataSetTableAdapters.UchenikiTableAdapter uchenikiTableAdapter;
+        private BiblioBDDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
     }
 }

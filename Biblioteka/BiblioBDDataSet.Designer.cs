@@ -1501,11 +1501,11 @@ namespace Biblioteka {
             
             private global::System.Data.DataColumn columnFIO;
             
-            private global::System.Data.DataColumn columnVozrast;
-            
             private global::System.Data.DataColumn columnKlass;
             
             private global::System.Data.DataColumn columnPol;
+            
+            private global::System.Data.DataColumn columnVozrast;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1558,14 +1558,6 @@ namespace Biblioteka {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VozrastColumn {
-                get {
-                    return this.columnVozrast;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn KlassColumn {
                 get {
                     return this.columnKlass;
@@ -1577,6 +1569,14 @@ namespace Biblioteka {
             public global::System.Data.DataColumn PolColumn {
                 get {
                     return this.columnPol;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn VozrastColumn {
+                get {
+                    return this.columnVozrast;
                 }
             }
             
@@ -1617,14 +1617,14 @@ namespace Biblioteka {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UchenikiRow AddUchenikiRow(int ID_Uchenika, string FIO, int Vozrast, string Klass, string Pol) {
+            public UchenikiRow AddUchenikiRow(int ID_Uchenika, string FIO, string Klass, string Pol, System.DateTime Vozrast) {
                 UchenikiRow rowUchenikiRow = ((UchenikiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID_Uchenika,
                         FIO,
-                        Vozrast,
                         Klass,
-                        Pol};
+                        Pol,
+                        Vozrast};
                 rowUchenikiRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowUchenikiRow);
                 return rowUchenikiRow;
@@ -1656,9 +1656,9 @@ namespace Biblioteka {
             internal void InitVars() {
                 this.columnID_Uchenika = base.Columns["ID_Uchenika"];
                 this.columnFIO = base.Columns["FIO"];
-                this.columnVozrast = base.Columns["Vozrast"];
                 this.columnKlass = base.Columns["Klass"];
                 this.columnPol = base.Columns["Pol"];
+                this.columnVozrast = base.Columns["Vozrast"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1668,12 +1668,12 @@ namespace Biblioteka {
                 base.Columns.Add(this.columnID_Uchenika);
                 this.columnFIO = new global::System.Data.DataColumn("FIO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFIO);
-                this.columnVozrast = new global::System.Data.DataColumn("Vozrast", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVozrast);
                 this.columnKlass = new global::System.Data.DataColumn("Klass", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKlass);
                 this.columnPol = new global::System.Data.DataColumn("Pol", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPol);
+                this.columnVozrast = new global::System.Data.DataColumn("Vozrast", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVozrast);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_Uchenika}, true));
                 this.columnID_Uchenika.AllowDBNull = false;
@@ -2774,22 +2774,6 @@ namespace Biblioteka {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Vozrast {
-                get {
-                    try {
-                        return ((int)(this[this.tableUcheniki.VozrastColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Vozrast\' в таблице \'Ucheniki\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableUcheniki.VozrastColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Klass {
                 get {
                     try {
@@ -2822,6 +2806,22 @@ namespace Biblioteka {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime Vozrast {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableUcheniki.VozrastColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Vozrast\' в таблице \'Ucheniki\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableUcheniki.VozrastColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsFIONull() {
                 return this.IsNull(this.tableUcheniki.FIOColumn);
             }
@@ -2830,18 +2830,6 @@ namespace Biblioteka {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetFIONull() {
                 this[this.tableUcheniki.FIOColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsVozrastNull() {
-                return this.IsNull(this.tableUcheniki.VozrastColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetVozrastNull() {
-                this[this.tableUcheniki.VozrastColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2866,6 +2854,18 @@ namespace Biblioteka {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPolNull() {
                 this[this.tableUcheniki.PolColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsVozrastNull() {
+                return this.IsNull(this.tableUcheniki.VozrastColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetVozrastNull() {
+                this[this.tableUcheniki.VozrastColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3954,39 +3954,45 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password, type FROM Bibliotekar WH
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password, type FROM Bibliotekar";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        FIO\r\nFROM            Bibliotekar\r\nGROUP BY FIO, Login\r\nHAVING      " +
-                "  (Login = @P)";
+            this._commandCollection[1].CommandText = "SELECT        Data_Rojdeniya\r\nFROM            Bibliotekar\r\nGROUP BY Login, Data_R" +
+                "ojdeniya\r\nHAVING        (Login = @p)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@P", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        Password\r\nFROM            Bibliotekar\r\nGROUP BY Login, Password\r\nHA" +
-                "VING        (Login = @P)";
+            this._commandCollection[2].CommandText = "SELECT        FIO\r\nFROM            Bibliotekar\r\nGROUP BY FIO, Login\r\nHAVING      " +
+                "  (Login = @P)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@P", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        Tab_Nomer\r\nFROM            Bibliotekar\r\nGROUP BY Tab_Nomer, Login\r\n" +
-                "HAVING        (Login = @p)";
+            this._commandCollection[3].CommandText = "SELECT        Password\r\nFROM            Bibliotekar\r\nGROUP BY Login, Password\r\nHA" +
+                "VING        (Login = @P)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@P", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT        type\r\nFROM            Bibliotekar\r\nGROUP BY Login, type\r\nHAVING    " +
-                "    (Login = @p)";
+            this._commandCollection[4].CommandText = "SELECT        Tab_Nomer\r\nFROM            Bibliotekar\r\nGROUP BY Tab_Nomer, Login\r\n" +
+                "HAVING        (Login = @p)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT        COUNT(Tab_Nomer) AS Expr1\r\nFROM            Bibliotekar";
+            this._commandCollection[5].CommandText = "SELECT        type\r\nFROM            Bibliotekar\r\nGROUP BY Login, type\r\nHAVING    " +
+                "    (Login = @p)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "SELECT        COUNT(Tab_Nomer) AS Expr1\r\nFROM            Bibliotekar";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4260,8 +4266,42 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password, type FROM Bibliotekar WH
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual string GetFio(string P) {
+        public virtual global::System.Nullable<global::System.DateTime> GetDR(string p) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            if ((p == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(p));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<global::System.DateTime>();
+            }
+            else {
+                return new global::System.Nullable<global::System.DateTime>(((global::System.DateTime)(returnValue)));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual string GetFio(string P) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             if ((P == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -4295,7 +4335,7 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password, type FROM Bibliotekar WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual global::System.Nullable<int> GetPassword(string P) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((P == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -4329,40 +4369,6 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password, type FROM Bibliotekar WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual global::System.Nullable<int> GetTabNomer(string p) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
-            if ((p == null)) {
-                command.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[0].Value = ((string)(p));
-            }
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            object returnValue;
-            try {
-                returnValue = command.ExecuteScalar();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            if (((returnValue == null) 
-                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
-                return new global::System.Nullable<int>();
-            }
-            else {
-                return new global::System.Nullable<int>(((int)(returnValue)));
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> GetType(string p) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((p == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -4396,8 +4402,42 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password, type FROM Bibliotekar WH
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> ScalarQuery() {
+        public virtual global::System.Nullable<int> GetType(string p) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            if ((p == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(p));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<int>();
+            }
+            else {
+                return new global::System.Nullable<int>(((int)(returnValue)));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<int> ScalarQuery() {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5273,53 +5313,53 @@ SELECT ID_Knigi, Name, Avtor, Izdatel, Janr, DataPublik, Kol_vo, Cena_Sht FROM K
             tableMapping.DataSetTable = "Ucheniki";
             tableMapping.ColumnMappings.Add("ID_Uchenika", "ID_Uchenika");
             tableMapping.ColumnMappings.Add("FIO", "FIO");
-            tableMapping.ColumnMappings.Add("Vozrast", "Vozrast");
             tableMapping.ColumnMappings.Add("Klass", "Klass");
             tableMapping.ColumnMappings.Add("Pol", "Pol");
+            tableMapping.ColumnMappings.Add("Vozrast", "Vozrast");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Ucheniki] WHERE (([ID_Uchenika] = @Original_ID_Uchenika) AND ((@IsNull_FIO = 1 AND [FIO] IS NULL) OR ([FIO] = @Original_FIO)) AND ((@IsNull_Vozrast = 1 AND [Vozrast] IS NULL) OR ([Vozrast] = @Original_Vozrast)) AND ((@IsNull_Klass = 1 AND [Klass] IS NULL) OR ([Klass] = @Original_Klass)) AND ((@IsNull_Pol = 1 AND [Pol] IS NULL) OR ([Pol] = @Original_Pol)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Ucheniki] WHERE (([ID_Uchenika] = @Original_ID_Uchenika) AND ((@IsNull_FIO = 1 AND [FIO] IS NULL) OR ([FIO] = @Original_FIO)) AND ((@IsNull_Klass = 1 AND [Klass] IS NULL) OR ([Klass] = @Original_Klass)) AND ((@IsNull_Pol = 1 AND [Pol] IS NULL) OR ([Pol] = @Original_Pol)) AND ((@IsNull_Vozrast = 1 AND [Vozrast] IS NULL) OR ([Vozrast] = @Original_Vozrast)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Uchenika", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Uchenika", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FIO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FIO", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Vozrast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Vozrast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Klass", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Klass", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Klass", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Klass", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Pol", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pol", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Pol", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pol", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Vozrast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Vozrast", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Ucheniki] ([ID_Uchenika], [FIO], [Vozrast], [Klass], [Pol]) VA" +
-                "LUES (@ID_Uchenika, @FIO, @Vozrast, @Klass, @Pol);\r\nSELECT ID_Uchenika, FIO, Voz" +
-                "rast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = @ID_Uchenika)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Ucheniki] ([ID_Uchenika], [FIO], [Klass], [Pol], [Vozrast]) VALUES (" +
+                "@ID_Uchenika, @FIO, @Klass, @Pol, @Vozrast);\r\nSELECT ID_Uchenika, FIO, Klass, Po" +
+                "l, Vozrast FROM Ucheniki WHERE (ID_Uchenika = @ID_Uchenika)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Uchenika", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Uchenika", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FIO", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vozrast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Klass", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Klass", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Pol", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vozrast", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Ucheniki] SET [ID_Uchenika] = @ID_Uchenika, [FIO] = @FIO, [Vozrast] = @Vozrast, [Klass] = @Klass, [Pol] = @Pol WHERE (([ID_Uchenika] = @Original_ID_Uchenika) AND ((@IsNull_FIO = 1 AND [FIO] IS NULL) OR ([FIO] = @Original_FIO)) AND ((@IsNull_Vozrast = 1 AND [Vozrast] IS NULL) OR ([Vozrast] = @Original_Vozrast)) AND ((@IsNull_Klass = 1 AND [Klass] IS NULL) OR ([Klass] = @Original_Klass)) AND ((@IsNull_Pol = 1 AND [Pol] IS NULL) OR ([Pol] = @Original_Pol)));
-SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = @ID_Uchenika)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Ucheniki] SET [ID_Uchenika] = @ID_Uchenika, [FIO] = @FIO, [Klass] = @Klass, [Pol] = @Pol, [Vozrast] = @Vozrast WHERE (([ID_Uchenika] = @Original_ID_Uchenika) AND ((@IsNull_FIO = 1 AND [FIO] IS NULL) OR ([FIO] = @Original_FIO)) AND ((@IsNull_Klass = 1 AND [Klass] IS NULL) OR ([Klass] = @Original_Klass)) AND ((@IsNull_Pol = 1 AND [Pol] IS NULL) OR ([Pol] = @Original_Pol)) AND ((@IsNull_Vozrast = 1 AND [Vozrast] IS NULL) OR ([Vozrast] = @Original_Vozrast)));
+SELECT ID_Uchenika, FIO, Klass, Pol, Vozrast FROM Ucheniki WHERE (ID_Uchenika = @ID_Uchenika)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Uchenika", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Uchenika", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FIO", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vozrast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Klass", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Klass", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Pol", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vozrast", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Uchenika", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Uchenika", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FIO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FIO", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Vozrast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Vozrast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Klass", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Klass", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Klass", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Klass", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Pol", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pol", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Pol", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Pol", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Vozrast", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Vozrast", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5332,10 +5372,10 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM dbo.Ucheniki";
+            this._commandCollection[0].CommandText = "SELECT ID_Uchenika, FIO, Klass, Pol, Vozrast FROM Ucheniki";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -5348,14 +5388,26 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Uchenika", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        ID_Uchenika\r\nFROM            Ucheniki\r\nGROUP BY ID_Uchenika, FIO\r\nH" +
-                "AVING        (FIO = @p)";
+            this._commandCollection[3].CommandText = "SELECT ID_Uchenika, Vozrast FROM Ucheniki GROUP BY ID_Uchenika, FIO, Vozrast HAVI" +
+                "NG (FIO = @p) AND (Vozrast = @p2)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p", global::System.Data.SqlDbType.NChar, 55, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p2", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
             this._commandCollection[4].CommandText = "SELECT        COUNT(ID_Uchenika) AS Expr1\r\nFROM            Ucheniki";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "INSERT INTO Ucheniki\r\n                         (ID_Uchenika, FIO, Vozrast, Klass," +
+                " Pol)\r\nVALUES        (@ID_Uchenika,@FIO,@Vozrast,@Klass,@Pol); \r\nSELECT ID_Uchen" +
+                "ika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = @ID_Uchenika)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Uchenika", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Uchenika", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FIO", global::System.Data.SqlDbType.NChar, 55, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vozrast", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Vozrast", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Klass", global::System.Data.SqlDbType.NChar, 5, global::System.Data.ParameterDirection.Input, 0, 0, "Klass", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Pol", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Pol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5415,7 +5467,7 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID_Uchenika, string Original_FIO, global::System.Nullable<int> Original_Vozrast, string Original_Klass, string Original_Pol) {
+        public virtual int Delete(int Original_ID_Uchenika, string Original_FIO, string Original_Klass, string Original_Pol, global::System.Nullable<global::System.DateTime> Original_Vozrast) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID_Uchenika));
             if ((Original_FIO == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -5425,29 +5477,29 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_FIO));
             }
-            if ((Original_Vozrast.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_Vozrast.Value));
-            }
-            else {
+            if ((Original_Klass == null)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Original_Klass == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Klass));
+            }
+            if ((Original_Pol == null)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Klass));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Pol));
             }
-            if ((Original_Pol == null)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            if ((Original_Vozrast.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_Vozrast.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Pol));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5469,7 +5521,7 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ID_Uchenika, string FIO, global::System.Nullable<int> Vozrast, string Klass, string Pol) {
+        public virtual int Insert(int ID_Uchenika, string FIO, string Klass, string Pol, global::System.Nullable<global::System.DateTime> Vozrast) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID_Uchenika));
             if ((FIO == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -5477,23 +5529,23 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(FIO));
             }
-            if ((Vozrast.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Vozrast.Value));
-            }
-            else {
+            if ((Klass == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Klass == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Klass));
+            }
+            if ((Pol == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Klass));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Pol));
             }
-            if ((Pol == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            if ((Vozrast.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(Vozrast.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Pol));
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5515,7 +5567,7 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ID_Uchenika, string FIO, global::System.Nullable<int> Vozrast, string Klass, string Pol, int Original_ID_Uchenika, string Original_FIO, global::System.Nullable<int> Original_Vozrast, string Original_Klass, string Original_Pol) {
+        public virtual int Update(int ID_Uchenika, string FIO, string Klass, string Pol, global::System.Nullable<global::System.DateTime> Vozrast, int Original_ID_Uchenika, string Original_FIO, string Original_Klass, string Original_Pol, global::System.Nullable<global::System.DateTime> Original_Vozrast) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ID_Uchenika));
             if ((FIO == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -5523,23 +5575,23 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(FIO));
             }
-            if ((Vozrast.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Vozrast.Value));
-            }
-            else {
+            if ((Klass == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Klass == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Klass));
+            }
+            if ((Pol == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Klass));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Pol));
             }
-            if ((Pol == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            if ((Vozrast.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Vozrast.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Pol));
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ID_Uchenika));
             if ((Original_FIO == null)) {
@@ -5550,29 +5602,29 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_FIO));
             }
-            if ((Original_Vozrast.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Vozrast.Value));
-            }
-            else {
+            if ((Original_Klass == null)) {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Original_Klass == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Klass));
+            }
+            if ((Original_Pol == null)) {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Klass));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Pol));
             }
-            if ((Original_Pol == null)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            if ((Original_Vozrast.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_Vozrast.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Pol));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5594,8 +5646,8 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string FIO, global::System.Nullable<int> Vozrast, string Klass, string Pol, int Original_ID_Uchenika, string Original_FIO, global::System.Nullable<int> Original_Vozrast, string Original_Klass, string Original_Pol) {
-            return this.Update(Original_ID_Uchenika, FIO, Vozrast, Klass, Pol, Original_ID_Uchenika, Original_FIO, Original_Vozrast, Original_Klass, Original_Pol);
+        public virtual int Update(string FIO, string Klass, string Pol, global::System.Nullable<global::System.DateTime> Vozrast, int Original_ID_Uchenika, string Original_FIO, string Original_Klass, string Original_Pol, global::System.Nullable<global::System.DateTime> Original_Vozrast) {
+            return this.Update(Original_ID_Uchenika, FIO, Klass, Pol, Vozrast, Original_ID_Uchenika, Original_FIO, Original_Klass, Original_Pol, Original_Vozrast);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5648,13 +5700,19 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> GetID(string p) {
+        public virtual global::System.Nullable<int> GetID(string p, global::System.Nullable<global::System.DateTime> p2) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((p == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 command.Parameters[0].Value = ((string)(p));
+            }
+            if ((p2.HasValue == true)) {
+                command.Parameters[1].Value = ((System.DateTime)(p2.Value));
+            }
+            else {
+                command.Parameters[1].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5705,6 +5763,54 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
             else {
                 return new global::System.Nullable<int>(((int)(returnValue)));
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertQuery(int ID_Uchenika, string FIO, global::System.Nullable<global::System.DateTime> Vozrast, string Klass, string Pol) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            command.Parameters[0].Value = ((int)(ID_Uchenika));
+            if ((FIO == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(FIO));
+            }
+            if ((Vozrast.HasValue == true)) {
+                command.Parameters[2].Value = ((System.DateTime)(Vozrast.Value));
+            }
+            else {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((Klass == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(Klass));
+            }
+            if ((Pol == null)) {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[4].Value = ((string)(Pol));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     

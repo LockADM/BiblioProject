@@ -37,6 +37,7 @@ namespace Biblioteka
                 {
                     main.autorizationFlag = true;
                     main.toolStripStatusLabel3.Text = this.bibliotekarTableAdapter.GetFio(textBox1.Text);
+                    main.UchenikDR = Convert.ToDateTime(this.bibliotekarTableAdapter.GetDR(textBox1.Text));
                     main.tab_nomer = (int)this.bibliotekarTableAdapter.GetTabNomer(textBox1.Text);
                     main.TypeOfAccount = (int)this.bibliotekarTableAdapter.GetType(textBox1.Text);
                     this.Close();

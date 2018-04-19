@@ -21,6 +21,8 @@ namespace Biblioteka
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "biblioBDDataSet.Ucheniki". При необходимости она может быть перемещена или удалена.
             this.uchenikiTableAdapter.Fill(this.biblioBDDataSet.Ucheniki);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "biblioBDDataSet.Ucheniki". При необходимости она может быть перемещена или удалена.
+            this.uchenikiTableAdapter.Fill(this.biblioBDDataSet.Ucheniki);
             
             
         }
@@ -31,11 +33,10 @@ namespace Biblioteka
             UchenikID = (int)this.uchenikiTableAdapter.GetLastID();
             try
             {
-
-                this.uchenikiTableAdapter.Insert(UchenikID + 1, fIOTextBox.Text, Convert.ToInt32(vozrastNumeric.Text), klassTextBox.Text, comboBox1.SelectedItem.ToString());
+                this.uchenikiTableAdapter.InsertQuery(UchenikID + 1, fIOTextBox.Text, dateTimePicker1.Value.Date, klassTextBox.Text, comboBox1.SelectedItem.ToString());
             }
             catch(Exception) { MessageBox.Show("Укажите пол!"); }
-            this.tableAdapterManager.UpdateAll(this.biblioBDDataSet);
+            this.tableAdapterManager1.UpdateAll(this.biblioBDDataSet);
         }
 
         private void CloseBttn_Click(object sender, EventArgs e)

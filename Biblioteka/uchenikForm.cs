@@ -78,15 +78,17 @@ namespace Biblioteka
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
+            try
             {
-                if (Convert.ToBoolean(dataGridView1.CurrentRow.Cells[6].Value) == false && Convert.ToDateTime(dataGridView1.CurrentRow.Cells[4].Value) > DateTime.Now.Date)
+                if (Convert.ToBoolean(dataGridView1.CurrentRow.Cells[6].Value) == false && Convert.ToDateTime(dataGridView1.CurrentRow.Cells[4].Value) < DateTime.Now.Date)
                 {
                     label4.Text = "Имеется задолжность по выбранной позиции";
                     label4.ForeColor = Color.Red;
                 }
                 else { label4.Text = "Задолжности по выбранной позиции нет"; label4.ForeColor = Color.Green; }
             }
+            catch (Exception) { }
+            
 
         }
     }

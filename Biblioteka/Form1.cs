@@ -21,6 +21,7 @@ namespace Biblioteka
         public int tab_nomer = 0;
         public int TypeOfAccount = 4;
         public int ID_Uchenika = 0;
+        public DateTime UchenikDR = new DateTime();
 
 
 
@@ -75,7 +76,7 @@ namespace Biblioteka
                     очиститьТаблицуToolStripMenuItem.Enabled = true;
                     экспортToolStripMenuItem.Enabled = true;
                     добавитьУченикаToolStripMenuItem.Enabled = true;
-                    toolStripStatusLabel5.Text += "Администратор";
+                    toolStripStatusLabel5.Text += "Вы авторизовались как :Администратор";
                 }
                 if(TypeOfAccount == 0)
                 {
@@ -88,13 +89,13 @@ namespace Biblioteka
                     отладкаToolStripMenuItem.Enabled = true;
                     экспортToolStripMenuItem.Enabled = true;
                     добавитьУченикаToolStripMenuItem.Enabled = true;
-                    toolStripStatusLabel5.Text += "Библиотекарь";
+                    toolStripStatusLabel5.Text = "Вы авторизовались как: Библиотекарь";
                 }
                 if(TypeOfAccount == 1)
                 {
                     try
                     {
-                        ID_Uchenika = (int)this.uchenikiTableAdapter.GetID(toolStripStatusLabel3.Text);
+                        ID_Uchenika = (int)this.uchenikiTableAdapter.GetID(toolStripStatusLabel3.Text,UchenikDR);
                         uchenikForm UchForm = new uchenikForm();
                         UchForm.Owner = this;
                         UchForm.ShowDialog();
@@ -257,7 +258,7 @@ namespace Biblioteka
                 {
                     if ((string)uchenikiDataGridView.Rows[i].Cells[1].Value == (string)uchenikiDataGridView.Rows[i - 1].Cells[1].Value)
                     {
-                        if (Convert.ToInt32(uchenikiDataGridView.Rows[i].Cells[2].Value) == Convert.ToInt32(uchenikiDataGridView.Rows[i - 1].Cells[2].Value))
+                        if (Convert.ToDateTime(uchenikiDataGridView.Rows[i].Cells[2].Value) == Convert.ToDateTime(uchenikiDataGridView.Rows[i - 1].Cells[2].Value))
                         {
                             if (uchenikiDataGridView.Rows[i].Cells[3].Value.ToString() == uchenikiDataGridView.Rows[i - 1].Cells[3].Value.ToString())
                             {
@@ -301,11 +302,20 @@ namespace Biblioteka
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Сохранить изменения?", "Завершение работы", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            System.Windows.Forms.DialogResult local = MessageBox.Show("Сохранить изменения?", "Завершение работы", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (local == System.Windows.Forms.DialogResult.Yes)
             {
                 this.Validate();
                 this.tableAdapterManager.UpdateAll(biblioBDDataSet);
             }
+            else
+            {
+                if (local == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
+            }
+            
         }
 
         private void fioserchBox_TextChanged(object sender, EventArgs e)
@@ -313,10 +323,7 @@ namespace Biblioteka
             uchenikiBindingSource.Filter = "FIO = '" + fioserchBox.Text + "'";
         }
 
-        private void ToNumBox_ValueChanged(object sender, EventArgs e)
-        {
-            uchenikiBindingSource.Filter = "Vozrast >= '" + FromNumBox.Value + "' AND Vozrast <= '" + ToNumBox.Value + "'";
-        }
+     
 
         private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
@@ -385,6 +392,13 @@ namespace Biblioteka
         {
 
             Help.ShowHelp(this,@"biblio.chm");
+        }
+
+        private void toDTP2_CloseUp(object sender, EventArgs e)
+        {
+            string _maxDate = Convert.ToDateTime(toDTP2.Value).ToString("MM.dd.yyyy"); // Перевод местной даты в интернациональный формат
+            string _minDate = Convert.ToDateTime(fromDTP1.Value).ToString("MM.dd.yyyy"); //
+            uchenikiBindingSource.Filter = "Vozrast >= #" + _minDate + "# AND Vozrast <= #" + _maxDate + "#";
         }
     }
 }
