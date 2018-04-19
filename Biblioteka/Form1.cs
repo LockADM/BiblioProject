@@ -19,9 +19,11 @@ namespace Biblioteka
         AddUchenikForm AddUchForm;
         public bool autorizationFlag = false;
         public int tab_nomer = 0;
-        public int TypeOfAccount;
+        public int TypeOfAccount = 4;
+        public int ID_Uchenika = 0;
 
-        
+
+
         private void BBL_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             if (e.Exception != null && e.Context == DataGridViewDataErrorContexts.Commit)
@@ -90,11 +92,28 @@ namespace Biblioteka
                 }
                 if(TypeOfAccount == 1)
                 {
-
+                    try
+                    {
+                        ID_Uchenika = (int)this.uchenikiTableAdapter.GetID(toolStripStatusLabel3.Text);
+                        uchenikForm UchForm = new uchenikForm();
+                        UchForm.Owner = this;
+                        UchForm.ShowDialog();
+                    }
+                    catch (InvalidOperationException) { MessageBox.Show("Данного ученика нет в общей базе данных, обратитесь к сотруднику библиотеки!");
+                        using (AutorizationForm AForm = new AutorizationForm())
+                        {
+                            TypeOfAccount = 4;
+                            AForm.Owner = this;
+                            AForm.ShowDialog();
+                        }
+                    }
+                   
                 }
             }
-           
-           
+            if (TypeOfAccount == 4)
+            {
+                this.Validate();
+            }
             cheakSistem();
         }
 

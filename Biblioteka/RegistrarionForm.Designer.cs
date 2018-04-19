@@ -43,10 +43,10 @@
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.CloseBttn = new System.Windows.Forms.Button();
             this.AddBttn = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             fIOLabel = new System.Windows.Forms.Label();
             data_RojdeniyaLabel = new System.Windows.Forms.Label();
             loginLabel = new System.Windows.Forms.Label();
@@ -97,6 +97,16 @@
             passwordLabel.Size = new System.Drawing.Size(61, 17);
             passwordLabel.TabIndex = 9;
             passwordLabel.Text = "Пароль:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(20, 194);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(141, 17);
+            label1.TabIndex = 12;
+            label1.Text = "Тип учетной записи";
             // 
             // biblioBDDataSet
             // 
@@ -176,6 +186,18 @@
             this.panel1.Size = new System.Drawing.Size(315, 249);
             this.panel1.TabIndex = 11;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Библиотекарь",
+            "Ученик",
+            "Администратор"});
+            this.comboBox1.Location = new System.Drawing.Point(23, 214);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(265, 25);
+            this.comboBox1.TabIndex = 11;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.CloseBttn);
@@ -206,28 +228,6 @@
             this.AddBttn.Text = "Добавить";
             this.AddBttn.UseVisualStyleBackColor = true;
             this.AddBttn.Click += new System.EventHandler(this.AddBttn_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Библиотекарь",
-            "Ученик",
-            "Администратор"});
-            this.comboBox1.Location = new System.Drawing.Point(23, 214);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(265, 25);
-            this.comboBox1.TabIndex = 11;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(20, 194);
-            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(141, 17);
-            label1.TabIndex = 12;
-            label1.Text = "Тип учетной записи";
             // 
             // RegistrarionForm
             // 

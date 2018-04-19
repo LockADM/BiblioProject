@@ -47,6 +47,14 @@ namespace Biblioteka
                 }
                 else { MessageBox.Show("Недостаточно прав для добавления администратора! Выберете другой тип учетной записи!"); }
             }
+            else
+            {
+                int lastId = (int)this.bibliotekarTableAdapter.ScalarQuery();
+                int hashPass = passwordTextBox.Text.GetHashCode();
+                this.bibliotekarTableAdapter.Insert(lastId + 1, fIOTextBox.Text, data_RojdeniyaDateTimePicker.Value.Date, loginTextBox.Text, hashPass, comboBox1.SelectedIndex.ToString());
+                this.tableAdapterManager.UpdateAll(biblioBDDataSet);
+                MessageBox.Show("Новый пользователь добавлен!");
+            }
         }
 
         private void CloseBttn_Click(object sender, EventArgs e)

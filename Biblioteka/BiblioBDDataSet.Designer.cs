@@ -930,10 +930,10 @@ namespace Biblioteka {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BibliotekarRow AddBibliotekarRow(string FIO, System.DateTime Data_Rojdeniya, string Login, int Password, int type) {
+            public BibliotekarRow AddBibliotekarRow(int Tab_Nomer, string FIO, System.DateTime Data_Rojdeniya, string Login, int Password, int type) {
                 BibliotekarRow rowBibliotekarRow = ((BibliotekarRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        Tab_Nomer,
                         FIO,
                         Data_Rojdeniya,
                         Login,
@@ -995,8 +995,7 @@ namespace Biblioteka {
                                 this.columnTab_Nomer}, true));
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
                                 this.columnLogin}, false));
-                this.columnTab_Nomer.AutoIncrement = true;
-                this.columnTab_Nomer.AutoIncrementSeed = 1;
+                this.columnTab_Nomer.AutoIncrementSeed = 4;
                 this.columnTab_Nomer.AllowDBNull = false;
                 this.columnTab_Nomer.Unique = true;
                 this.columnFIO.MaxLength = 55;
@@ -3417,7 +3416,7 @@ SELECT Npp, ID_Uchenika, ID_Knigi, Data_Vzyal, Data_Sdal, Kol_Vo, Status FROM Bi
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Npp, ID_Uchenika, ID_Knigi, Data_Vzyal, Data_Sdal, Kol_Vo, Status FROM dbo" +
@@ -3428,6 +3427,16 @@ SELECT Npp, ID_Uchenika, ID_Knigi, Data_Vzyal, Data_Sdal, Kol_Vo, Status FROM Bi
             this._commandCollection[1].CommandText = "DELETE FROM BiblioKart\r\nWHERE        (ID_Uchenika = @P)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@P", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Uchenika", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        Npp, ID_Uchenika, ID_Knigi, Data_Vzyal, Data_Sdal, Kol_Vo, Status\r\n" +
+                "FROM            BiblioKart\r\nWHERE        (ID_Uchenika = @p)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Uchenika", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT        COUNT(Npp) AS Expr1\r\nFROM            BiblioKart";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3449,6 +3458,32 @@ SELECT Npp, ID_Uchenika, ID_Knigi, Data_Vzyal, Data_Sdal, Kol_Vo, Status FROM Bi
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual BiblioBDDataSet.BiblioKartDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            BiblioBDDataSet.BiblioKartDataTable dataTable = new BiblioBDDataSet.BiblioKartDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByUchenikBibliokard(BiblioBDDataSet.BiblioKartDataTable dataTable, int p) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(p));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual BiblioBDDataSet.BiblioKartDataTable GetByUchenikBibliokard(int p) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(p));
             BiblioBDDataSet.BiblioKartDataTable dataTable = new BiblioBDDataSet.BiblioKartDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -3700,6 +3735,34 @@ SELECT Npp, ID_Uchenika, ID_Knigi, Data_Vzyal, Data_Sdal, Kol_Vo, Status FROM Bi
                 }
             }
             return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<int> GetIDCount() {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<int>();
+            }
+            else {
+                return new global::System.Nullable<int>(((int)(returnValue)));
+            }
         }
     }
     
@@ -5269,7 +5332,7 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM dbo.Ucheniki";
@@ -5285,8 +5348,14 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Uchenika", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        COUNT(ID_Uchenika) AS Expr1\r\nFROM            Ucheniki";
+            this._commandCollection[3].CommandText = "SELECT        ID_Uchenika\r\nFROM            Ucheniki\r\nGROUP BY ID_Uchenika, FIO\r\nH" +
+                "AVING        (FIO = @p)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p", global::System.Data.SqlDbType.NChar, 55, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "SELECT        COUNT(ID_Uchenika) AS Expr1\r\nFROM            Ucheniki";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5579,8 +5648,42 @@ SELECT ID_Uchenika, FIO, Vozrast, Klass, Pol FROM Ucheniki WHERE (ID_Uchenika = 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> GetLastID() {
+        public virtual global::System.Nullable<int> GetID(string p) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            if ((p == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(p));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<int>();
+            }
+            else {
+                return new global::System.Nullable<int>(((int)(returnValue)));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<int> GetLastID() {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

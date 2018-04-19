@@ -33,9 +33,6 @@ namespace Biblioteka
             try
             {
                 HashPassDB = (int)this.bibliotekarTableAdapter.GetPassword(textBox1.Text);
-
-
-
                 if (HashPass == HashPassDB)
                 {
                     main.autorizationFlag = true;
@@ -45,7 +42,7 @@ namespace Biblioteka
                     this.Close();
                 }
             }
-            catch (FormatException) { MessageBox.Show("Неверные идентификатор/пароль!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            catch (Exception) { MessageBox.Show("Неверные идентификатор/пароль!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
     }
 }

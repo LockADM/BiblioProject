@@ -125,6 +125,12 @@
     <Compile Include="RegistrarionForm.Designer.cs">
       <DependentUpon>RegistrarionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="uchenikForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="uchenikForm.Designer.cs">
+      <DependentUpon>uchenikForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddNewBookForm.resx">
       <DependentUpon>AddNewBookForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +167,9 @@
     <Content Include="biblio.chm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="uchenikForm.resx">
+      <DependentUpon>uchenikForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="BiblioBDDataSet.xsc">
       <DependentUpon>BiblioBDDataSet.xsd</DependentUpon>
     </None>
