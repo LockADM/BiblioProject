@@ -33,6 +33,7 @@
             System.Windows.Forms.Label data_RojdeniyaLabel;
             System.Windows.Forms.Label loginLabel;
             System.Windows.Forms.Label passwordLabel;
+            System.Windows.Forms.Label label1;
             this.biblioBDDataSet = new Biblioteka.BiblioBDDataSet();
             this.bibliotekarBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bibliotekarTableAdapter = new Biblioteka.BiblioBDDataSetTableAdapters.BibliotekarTableAdapter();
@@ -45,10 +46,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.CloseBttn = new System.Windows.Forms.Button();
             this.AddBttn = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             fIOLabel = new System.Windows.Forms.Label();
             data_RojdeniyaLabel = new System.Windows.Forms.Label();
             loginLabel = new System.Windows.Forms.Label();
             passwordLabel = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bibliotekarBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -125,7 +128,7 @@
             this.fIOTextBox.Location = new System.Drawing.Point(23, 27);
             this.fIOTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.fIOTextBox.Name = "fIOTextBox";
-            this.fIOTextBox.Size = new System.Drawing.Size(134, 23);
+            this.fIOTextBox.Size = new System.Drawing.Size(265, 23);
             this.fIOTextBox.TabIndex = 4;
             // 
             // data_RojdeniyaDateTimePicker
@@ -158,6 +161,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(label1);
+            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(fIOLabel);
             this.panel1.Controls.Add(loginLabel);
             this.panel1.Controls.Add(data_RojdeniyaLabel);
@@ -168,22 +173,22 @@
             this.panel1.Controls.Add(this.data_RojdeniyaDateTimePicker);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(315, 216);
+            this.panel1.Size = new System.Drawing.Size(315, 249);
             this.panel1.TabIndex = 11;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.CloseBttn);
             this.panel2.Controls.Add(this.AddBttn);
-            this.panel2.Location = new System.Drawing.Point(12, 234);
+            this.panel2.Location = new System.Drawing.Point(12, 264);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(315, 50);
+            this.panel2.Size = new System.Drawing.Size(315, 53);
             this.panel2.TabIndex = 12;
             // 
             // CloseBttn
             // 
             this.CloseBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CloseBttn.Location = new System.Drawing.Point(3, 3);
+            this.CloseBttn.Location = new System.Drawing.Point(23, 3);
             this.CloseBttn.Name = "CloseBttn";
             this.CloseBttn.Size = new System.Drawing.Size(99, 44);
             this.CloseBttn.TabIndex = 1;
@@ -194,7 +199,7 @@
             // AddBttn
             // 
             this.AddBttn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.AddBttn.Location = new System.Drawing.Point(213, 3);
+            this.AddBttn.Location = new System.Drawing.Point(189, 6);
             this.AddBttn.Name = "AddBttn";
             this.AddBttn.Size = new System.Drawing.Size(99, 44);
             this.AddBttn.TabIndex = 0;
@@ -202,11 +207,33 @@
             this.AddBttn.UseVisualStyleBackColor = true;
             this.AddBttn.Click += new System.EventHandler(this.AddBttn_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Библиотекарь",
+            "Ученик",
+            "Администратор"});
+            this.comboBox1.Location = new System.Drawing.Point(23, 214);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(265, 25);
+            this.comboBox1.TabIndex = 11;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(20, 194);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(141, 17);
+            label1.TabIndex = 12;
+            label1.Text = "Тип учетной записи";
+            // 
             // RegistrarionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(342, 309);
+            this.ClientSize = new System.Drawing.Size(342, 327);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
@@ -240,5 +267,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button CloseBttn;
         private System.Windows.Forms.Button AddBttn;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

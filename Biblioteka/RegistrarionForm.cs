@@ -34,11 +34,19 @@ namespace Biblioteka
 
         private void AddBttn_Click(object sender, EventArgs e)
         {
-            int lastId = (int)this.bibliotekarTableAdapter.ScalarQuery();
-            int hashPass = passwordTextBox.Text.GetHashCode();
-            this.bibliotekarTableAdapter.Insert(lastId + 1, fIOTextBox.Text, data_RojdeniyaDateTimePicker.Value.Date, loginTextBox.Text, hashPass);
-            this.tableAdapterManager.UpdateAll(biblioBDDataSet);
-            MessageBox.Show("Новый пользователь добавлен!");
+            Form1 main = this.Owner as Form1;
+            if (comboBox1.SelectedIndex == 2)
+            {
+                if (main.TypeOfAccount == 2)
+                {
+                    int lastId = (int)this.bibliotekarTableAdapter.ScalarQuery();
+                    int hashPass = passwordTextBox.Text.GetHashCode();
+                    this.bibliotekarTableAdapter.Insert(lastId + 1, fIOTextBox.Text, data_RojdeniyaDateTimePicker.Value.Date, loginTextBox.Text, hashPass, comboBox1.SelectedIndex.ToString());
+                    this.tableAdapterManager.UpdateAll(biblioBDDataSet);
+                    MessageBox.Show("Новый пользователь добавлен!");
+                }
+                else { MessageBox.Show("Недостаточно прав для добавления администратора! Выберете другой тип учетной записи!"); }
+            }
         }
 
         private void CloseBttn_Click(object sender, EventArgs e)

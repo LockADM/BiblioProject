@@ -9,3 +9,10 @@
         }
     }
 }
+
+namespace Biblioteka.BiblioBDDataSetTableAdapters {
+    
+    
+    public partial class BibliotekarTableAdapter {
+    }
+}

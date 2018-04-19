@@ -810,6 +810,8 @@ namespace Biblioteka {
             
             private global::System.Data.DataColumn columnPassword;
             
+            private global::System.Data.DataColumn columntype;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public BibliotekarDataTable() {
@@ -885,6 +887,14 @@ namespace Biblioteka {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn typeColumn {
+                get {
+                    return this.columntype;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -920,14 +930,15 @@ namespace Biblioteka {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BibliotekarRow AddBibliotekarRow(string FIO, System.DateTime Data_Rojdeniya, string Login, int Password) {
+            public BibliotekarRow AddBibliotekarRow(string FIO, System.DateTime Data_Rojdeniya, string Login, int Password, int type) {
                 BibliotekarRow rowBibliotekarRow = ((BibliotekarRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         FIO,
                         Data_Rojdeniya,
                         Login,
-                        Password};
+                        Password,
+                        type};
                 rowBibliotekarRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBibliotekarRow);
                 return rowBibliotekarRow;
@@ -962,6 +973,7 @@ namespace Biblioteka {
                 this.columnData_Rojdeniya = base.Columns["Data_Rojdeniya"];
                 this.columnLogin = base.Columns["Login"];
                 this.columnPassword = base.Columns["Password"];
+                this.columntype = base.Columns["type"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -977,6 +989,8 @@ namespace Biblioteka {
                 base.Columns.Add(this.columnLogin);
                 this.columnPassword = new global::System.Data.DataColumn("Password", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPassword);
+                this.columntype = new global::System.Data.DataColumn("type", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntype);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnTab_Nomer}, true));
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
@@ -2400,6 +2414,22 @@ namespace Biblioteka {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int type {
+                get {
+                    try {
+                        return ((int)(this[this.tableBibliotekar.typeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'type\' в таблице \'Bibliotekar\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBibliotekar.typeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsFIONull() {
                 return this.IsNull(this.tableBibliotekar.FIOColumn);
             }
@@ -2432,6 +2462,18 @@ namespace Biblioteka {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPasswordNull() {
                 this[this.tableBibliotekar.PasswordColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstypeNull() {
+                return this.IsNull(this.tableBibliotekar.typeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettypeNull() {
+                this[this.tableBibliotekar.typeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3787,10 +3829,11 @@ SELECT Npp, ID_Uchenika, ID_Knigi, Data_Vzyal, Data_Sdal, Kol_Vo, Status FROM Bi
             tableMapping.ColumnMappings.Add("Data_Rojdeniya", "Data_Rojdeniya");
             tableMapping.ColumnMappings.Add("Login", "Login");
             tableMapping.ColumnMappings.Add("Password", "Password");
+            tableMapping.ColumnMappings.Add("type", "type");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Bibliotekar] WHERE (([Tab_Nomer] = @Original_Tab_Nomer) AND ((@IsNull_FIO = 1 AND [FIO] IS NULL) OR ([FIO] = @Original_FIO)) AND ((@IsNull_Data_Rojdeniya = 1 AND [Data_Rojdeniya] IS NULL) OR ([Data_Rojdeniya] = @Original_Data_Rojdeniya)) AND ((@IsNull_Login = 1 AND [Login] IS NULL) OR ([Login] = @Original_Login)) AND ((@IsNull_Password = 1 AND [Password] IS NULL) OR ([Password] = @Original_Password)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Bibliotekar] WHERE (([Tab_Nomer] = @Original_Tab_Nomer) AND ((@IsNull_FIO = 1 AND [FIO] IS NULL) OR ([FIO] = @Original_FIO)) AND ((@IsNull_Data_Rojdeniya = 1 AND [Data_Rojdeniya] IS NULL) OR ([Data_Rojdeniya] = @Original_Data_Rojdeniya)) AND ((@IsNull_Login = 1 AND [Login] IS NULL) OR ([Login] = @Original_Login)) AND ((@IsNull_Password = 1 AND [Password] IS NULL) OR ([Password] = @Original_Password)) AND ((@IsNull_type = 1 AND [type] IS NULL) OR ([type] = @Original_type)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Tab_Nomer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tab_Nomer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FIO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -3801,26 +3844,30 @@ SELECT Npp, ID_Uchenika, ID_Knigi, Data_Vzyal, Data_Sdal, Kol_Vo, Status FROM Bi
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Login", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Password", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_type", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "type", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_type", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "type", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Bibliotekar] ([Tab_Nomer], [FIO], [Data_Rojdeniya], [Login], [Password]) VALUES (@Tab_Nomer, @FIO, @Data_Rojdeniya, @Login, @Password);
-SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (Tab_Nomer = @Tab_Nomer)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Bibliotekar] ([Tab_Nomer], [FIO], [Data_Rojdeniya], [Login], [Password], [type]) VALUES (@Tab_Nomer, @FIO, @Data_Rojdeniya, @Login, @Password, @type);
+SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password, type FROM Bibliotekar WHERE (Tab_Nomer = @Tab_Nomer)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tab_Nomer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tab_Nomer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FIO", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Data_Rojdeniya", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Data_Rojdeniya", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Login", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@type", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Bibliotekar] SET [Tab_Nomer] = @Tab_Nomer, [FIO] = @FIO, [Data_Rojdeniya] = @Data_Rojdeniya, [Login] = @Login, [Password] = @Password WHERE (([Tab_Nomer] = @Original_Tab_Nomer) AND ((@IsNull_FIO = 1 AND [FIO] IS NULL) OR ([FIO] = @Original_FIO)) AND ((@IsNull_Data_Rojdeniya = 1 AND [Data_Rojdeniya] IS NULL) OR ([Data_Rojdeniya] = @Original_Data_Rojdeniya)) AND ((@IsNull_Login = 1 AND [Login] IS NULL) OR ([Login] = @Original_Login)) AND ((@IsNull_Password = 1 AND [Password] IS NULL) OR ([Password] = @Original_Password)));
-SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (Tab_Nomer = @Tab_Nomer)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Bibliotekar] SET [Tab_Nomer] = @Tab_Nomer, [FIO] = @FIO, [Data_Rojdeniya] = @Data_Rojdeniya, [Login] = @Login, [Password] = @Password, [type] = @type WHERE (([Tab_Nomer] = @Original_Tab_Nomer) AND ((@IsNull_FIO = 1 AND [FIO] IS NULL) OR ([FIO] = @Original_FIO)) AND ((@IsNull_Data_Rojdeniya = 1 AND [Data_Rojdeniya] IS NULL) OR ([Data_Rojdeniya] = @Original_Data_Rojdeniya)) AND ((@IsNull_Login = 1 AND [Login] IS NULL) OR ([Login] = @Original_Login)) AND ((@IsNull_Password = 1 AND [Password] IS NULL) OR ([Password] = @Original_Password)) AND ((@IsNull_type = 1 AND [type] IS NULL) OR ([type] = @Original_type)));
+SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password, type FROM Bibliotekar WHERE (Tab_Nomer = @Tab_Nomer)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tab_Nomer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tab_Nomer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FIO", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Data_Rojdeniya", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Data_Rojdeniya", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Login", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@type", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Tab_Nomer", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tab_Nomer", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FIO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FIO", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -3830,6 +3877,8 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Login", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Password", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_type", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "type", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_type", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "type", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3842,10 +3891,10 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM dbo.Bibliotekar";
+            this._commandCollection[0].CommandText = "SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password, type FROM Bibliotekar";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -3867,8 +3916,14 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT        COUNT(Tab_Nomer) AS Expr1\r\nFROM            Bibliotekar";
+            this._commandCollection[4].CommandText = "SELECT        type\r\nFROM            Bibliotekar\r\nGROUP BY Login, type\r\nHAVING    " +
+                "    (Login = @p)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p", global::System.Data.SqlDbType.NChar, 15, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "SELECT        COUNT(Tab_Nomer) AS Expr1\r\nFROM            Bibliotekar";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3928,7 +3983,7 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Tab_Nomer, string Original_FIO, global::System.Nullable<global::System.DateTime> Original_Data_Rojdeniya, string Original_Login, global::System.Nullable<int> Original_Password) {
+        public virtual int Delete(int Original_Tab_Nomer, string Original_FIO, global::System.Nullable<global::System.DateTime> Original_Data_Rojdeniya, string Original_Login, global::System.Nullable<int> Original_Password, string Original_type) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Tab_Nomer));
             if ((Original_FIO == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -3947,7 +4002,8 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             if ((Original_Login == null)) {
-                throw new global::System.ArgumentNullException("Original_Login");
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
@@ -3960,6 +4016,14 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((Original_type == null)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_type));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3981,7 +4045,7 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Tab_Nomer, string FIO, global::System.Nullable<global::System.DateTime> Data_Rojdeniya, string Login, global::System.Nullable<int> Password) {
+        public virtual int Insert(int Tab_Nomer, string FIO, global::System.Nullable<global::System.DateTime> Data_Rojdeniya, string Login, global::System.Nullable<int> Password, string type) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Tab_Nomer));
             if ((FIO == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -3996,7 +4060,7 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             if ((Login == null)) {
-                throw new global::System.ArgumentNullException("Login");
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Login));
@@ -4006,6 +4070,12 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((type == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(type));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4027,7 +4097,7 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Tab_Nomer, string FIO, global::System.Nullable<global::System.DateTime> Data_Rojdeniya, string Login, global::System.Nullable<int> Password, int Original_Tab_Nomer, string Original_FIO, global::System.Nullable<global::System.DateTime> Original_Data_Rojdeniya, string Original_Login, global::System.Nullable<int> Original_Password) {
+        public virtual int Update(int Tab_Nomer, string FIO, global::System.Nullable<global::System.DateTime> Data_Rojdeniya, string Login, global::System.Nullable<int> Password, string type, int Original_Tab_Nomer, string Original_FIO, global::System.Nullable<global::System.DateTime> Original_Data_Rojdeniya, string Original_Login, global::System.Nullable<int> Original_Password, string Original_type) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Tab_Nomer));
             if ((FIO == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -4042,7 +4112,7 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             if ((Login == null)) {
-                throw new global::System.ArgumentNullException("Login");
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Login));
@@ -4053,37 +4123,52 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Tab_Nomer));
-            if ((Original_FIO == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            if ((type == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_FIO));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(type));
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Tab_Nomer));
+            if ((Original_FIO == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_FIO));
             }
             if ((Original_Data_Rojdeniya.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_Data_Rojdeniya.Value));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_Data_Rojdeniya.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             if ((Original_Login == null)) {
-                throw new global::System.ArgumentNullException("Original_Login");
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Login));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Login));
             }
             if ((Original_Password.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_Password.Value));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_Password.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((Original_type == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_type));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4105,8 +4190,8 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string FIO, global::System.Nullable<global::System.DateTime> Data_Rojdeniya, string Login, global::System.Nullable<int> Password, int Original_Tab_Nomer, string Original_FIO, global::System.Nullable<global::System.DateTime> Original_Data_Rojdeniya, string Original_Login, global::System.Nullable<int> Original_Password) {
-            return this.Update(Original_Tab_Nomer, FIO, Data_Rojdeniya, Login, Password, Original_Tab_Nomer, Original_FIO, Original_Data_Rojdeniya, Original_Login, Original_Password);
+        public virtual int Update(string FIO, global::System.Nullable<global::System.DateTime> Data_Rojdeniya, string Login, global::System.Nullable<int> Password, string type, int Original_Tab_Nomer, string Original_FIO, global::System.Nullable<global::System.DateTime> Original_Data_Rojdeniya, string Original_Login, global::System.Nullable<int> Original_Password, string Original_type) {
+            return this.Update(Original_Tab_Nomer, FIO, Data_Rojdeniya, Login, Password, type, Original_Tab_Nomer, Original_FIO, Original_Data_Rojdeniya, Original_Login, Original_Password, Original_type);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4149,7 +4234,7 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
         public virtual global::System.Nullable<int> GetPassword(string P) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             if ((P == null)) {
-                throw new global::System.ArgumentNullException("P");
+                command.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 command.Parameters[0].Value = ((string)(P));
@@ -4214,8 +4299,42 @@ SELECT Tab_Nomer, FIO, Data_Rojdeniya, Login, Password FROM Bibliotekar WHERE (T
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> ScalarQuery() {
+        public virtual global::System.Nullable<int> GetType(string p) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            if ((p == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(p));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<int>();
+            }
+            else {
+                return new global::System.Nullable<int>(((int)(returnValue)));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<int> ScalarQuery() {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

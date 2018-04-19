@@ -36,17 +36,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.biblioKartDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.KnigigBS = new System.Windows.Forms.BindingSource(this.components);
-            this.biblioBDDataSet = new Biblioteka.BiblioBDDataSet();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.biblioKartBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.uchenikiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.StatusLabl = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -67,11 +57,6 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.uchenikiDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.входToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.авторизацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,19 +92,33 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.KnigigBS = new System.Windows.Forms.BindingSource(this.components);
+            this.biblioBDDataSet = new Biblioteka.BiblioBDDataSet();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.uchenikiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uchenikiTableAdapter = new Biblioteka.BiblioBDDataSetTableAdapters.UchenikiTableAdapter();
             this.tableAdapterManager = new Biblioteka.BiblioBDDataSetTableAdapters.TableAdapterManager();
             this.biblioKartTableAdapter = new Biblioteka.BiblioBDDataSetTableAdapters.BiblioKartTableAdapter();
             this.knigiTableAdapter = new Biblioteka.BiblioBDDataSetTableAdapters.KnigiTableAdapter();
             this.zakazTableAdapter1 = new Biblioteka.BiblioBDDataSetTableAdapters.ZakazTableAdapter();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.biblioKartDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KnigigBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.biblioKartBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uchenikiBindingSource)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -133,6 +132,9 @@
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ToNumBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FromNumBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KnigigBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uchenikiBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -208,80 +210,10 @@
             this.biblioKartDataGridView.Size = new System.Drawing.Size(550, 146);
             this.biblioKartDataGridView.TabIndex = 2;
             // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Npp";
-            this.dataGridViewTextBoxColumn6.HeaderText = "№ п/п";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "ID_Uchenika";
-            this.dataGridViewTextBoxColumn7.HeaderText = "ID_Uchenika";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "ID_Knigi";
-            this.dataGridViewTextBoxColumn8.DataSource = this.KnigigBS;
-            this.dataGridViewTextBoxColumn8.DisplayMember = "Name";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Книга";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewTextBoxColumn8.ValueMember = "ID_Knigi";
-            // 
-            // KnigigBS
-            // 
-            this.KnigigBS.DataMember = "Knigi";
-            this.KnigigBS.DataSource = this.biblioBDDataSet;
-            // 
-            // biblioBDDataSet
-            // 
-            this.biblioBDDataSet.DataSetName = "BiblioBDDataSet";
-            this.biblioBDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Data_Vzyal";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Когда взял";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "Data_Sdal";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Когда нужно сдать";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "Kol_Vo";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Количество";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Status";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Статус";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            // 
             // biblioKartBindingSource
             // 
             this.biblioKartBindingSource.DataMember = "FK_BiblioKart_Ucheniki";
             this.biblioKartBindingSource.DataSource = this.uchenikiBindingSource;
-            // 
-            // uchenikiBindingSource
-            // 
-            this.uchenikiBindingSource.DataMember = "Ucheniki";
-            this.uchenikiBindingSource.DataSource = this.biblioBDDataSet;
             // 
             // groupBox4
             // 
@@ -505,46 +437,6 @@
             this.uchenikiDataGridView.TabIndex = 0;
             this.uchenikiDataGridView.SelectionChanged += new System.EventHandler(this.uchenikiDataGridView_SelectionChanged);
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID_Uchenika";
-            this.dataGridViewTextBoxColumn1.HeaderText = "№ п/п";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "FIO";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Фио";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Vozrast";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Возраст";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Klass";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Класс";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Pol";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Пол";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -572,15 +464,16 @@
             // 
             this.авторизацияToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("авторизацияToolStripMenuItem.Image")));
             this.авторизацияToolStripMenuItem.Name = "авторизацияToolStripMenuItem";
-            this.авторизацияToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.авторизацияToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.авторизацияToolStripMenuItem.Text = "Авторизация";
             this.авторизацияToolStripMenuItem.Click += new System.EventHandler(this.авторизацияToolStripMenuItem_Click);
             // 
             // регистрацияToolStripMenuItem
             // 
+            this.регистрацияToolStripMenuItem.Enabled = false;
             this.регистрацияToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("регистрацияToolStripMenuItem.Image")));
             this.регистрацияToolStripMenuItem.Name = "регистрацияToolStripMenuItem";
-            this.регистрацияToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.регистрацияToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.регистрацияToolStripMenuItem.Text = "Регистрация";
             this.регистрацияToolStripMenuItem.Click += new System.EventHandler(this.регистрацияToolStripMenuItem_Click);
             // 
@@ -599,6 +492,7 @@
             // 
             // добавитьУченикаToolStripMenuItem
             // 
+            this.добавитьУченикаToolStripMenuItem.Enabled = false;
             this.добавитьУченикаToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("добавитьУченикаToolStripMenuItem.Image")));
             this.добавитьУченикаToolStripMenuItem.Name = "добавитьУченикаToolStripMenuItem";
             this.добавитьУченикаToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
@@ -619,6 +513,7 @@
             this.очиститьЛичнуюКарточкуУченикаToolStripMenuItem,
             this.удалитьДубликатыУченикиToolStripMenuItem,
             this.очиститьТаблицуToolStripMenuItem});
+            this.отладкаToolStripMenuItem.Enabled = false;
             this.отладкаToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("отладкаToolStripMenuItem.Image")));
             this.отладкаToolStripMenuItem.Name = "отладкаToolStripMenuItem";
             this.отладкаToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
@@ -646,6 +541,7 @@
             this.ученикиToolStripMenuItem,
             this.книгиToolStripMenuItem1,
             this.заказыToolStripMenuItem});
+            this.очиститьТаблицуToolStripMenuItem.Enabled = false;
             this.очиститьТаблицуToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("очиститьТаблицуToolStripMenuItem.Image")));
             this.очиститьТаблицуToolStripMenuItem.Name = "очиститьТаблицуToolStripMenuItem";
             this.очиститьТаблицуToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
@@ -654,21 +550,21 @@
             // ученикиToolStripMenuItem
             // 
             this.ученикиToolStripMenuItem.Name = "ученикиToolStripMenuItem";
-            this.ученикиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ученикиToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.ученикиToolStripMenuItem.Text = "Ученики";
             this.ученикиToolStripMenuItem.Click += new System.EventHandler(this.ученикиToolStripMenuItem_Click);
             // 
             // книгиToolStripMenuItem1
             // 
             this.книгиToolStripMenuItem1.Name = "книгиToolStripMenuItem1";
-            this.книгиToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.книгиToolStripMenuItem1.Size = new System.Drawing.Size(121, 22);
             this.книгиToolStripMenuItem1.Text = "Книги";
             this.книгиToolStripMenuItem1.Click += new System.EventHandler(this.книгиToolStripMenuItem1_Click);
             // 
             // заказыToolStripMenuItem
             // 
             this.заказыToolStripMenuItem.Name = "заказыToolStripMenuItem";
-            this.заказыToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.заказыToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.заказыToolStripMenuItem.Text = "Заказы";
             this.заказыToolStripMenuItem.Click += new System.EventHandler(this.заказыToolStripMenuItem_Click);
             // 
@@ -677,6 +573,7 @@
             this.экспортToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.excelToolStripMenuItem,
             this.библиотечнаяКартаToolStripMenuItem});
+            this.экспортToolStripMenuItem.Enabled = false;
             this.экспортToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("экспортToolStripMenuItem.Image")));
             this.экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
             this.экспортToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
@@ -709,7 +606,9 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
-            this.toolStripStatusLabel3});
+            this.toolStripStatusLabel3,
+            this.toolStripStatusLabel4,
+            this.toolStripStatusLabel5});
             this.statusStrip1.Location = new System.Drawing.Point(0, 651);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(849, 22);
@@ -885,6 +784,116 @@
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 4;
             // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Npp";
+            this.dataGridViewTextBoxColumn6.HeaderText = "№ п/п";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "ID_Uchenika";
+            this.dataGridViewTextBoxColumn7.HeaderText = "ID_Uchenika";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "ID_Knigi";
+            this.dataGridViewTextBoxColumn8.DataSource = this.KnigigBS;
+            this.dataGridViewTextBoxColumn8.DisplayMember = "Name";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Книга";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn8.ValueMember = "ID_Knigi";
+            // 
+            // KnigigBS
+            // 
+            this.KnigigBS.DataMember = "Knigi";
+            this.KnigigBS.DataSource = this.biblioBDDataSet;
+            // 
+            // biblioBDDataSet
+            // 
+            this.biblioBDDataSet.DataSetName = "BiblioBDDataSet";
+            this.biblioBDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Data_Vzyal";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Когда взял";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "Data_Sdal";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Когда нужно сдать";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "Kol_Vo";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Количество";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Status";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Статус";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            // 
+            // uchenikiBindingSource
+            // 
+            this.uchenikiBindingSource.DataMember = "Ucheniki";
+            this.uchenikiBindingSource.DataSource = this.biblioBDDataSet;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "ID_Uchenika";
+            this.dataGridViewTextBoxColumn1.HeaderText = "№ п/п";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "FIO";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Фио";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Vozrast";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Возраст";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Klass";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Класс";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Pol";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Пол";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
             // uchenikiTableAdapter
             // 
             this.uchenikiTableAdapter.ClearBeforeFill = true;
@@ -910,6 +919,18 @@
             // zakazTableAdapter1
             // 
             this.zakazTableAdapter1.ClearBeforeFill = true;
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(10, 17);
+            this.toolStripStatusLabel4.Text = ":";
+            // 
+            // toolStripStatusLabel5
+            // 
+            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(88, 17);
+            this.toolStripStatusLabel5.Text = "Уровень прав: ";
             // 
             // Form1
             // 
@@ -939,10 +960,7 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.biblioKartDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KnigigBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.biblioKartBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uchenikiBindingSource)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -962,6 +980,9 @@
             this.groupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ToNumBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FromNumBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KnigigBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uchenikiBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1051,6 +1072,8 @@
         private System.Windows.Forms.ToolStripMenuItem книгиToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem заказыToolStripMenuItem;
         private BiblioBDDataSetTableAdapters.ZakazTableAdapter zakazTableAdapter1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
     }
 }
 

@@ -19,6 +19,7 @@ namespace Biblioteka
         AddUchenikForm AddUchForm;
         public bool autorizationFlag = false;
         public int tab_nomer = 0;
+        public int TypeOfAccount;
 
         
         private void BBL_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -30,24 +31,10 @@ namespace Biblioteka
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (autorizationFlag == true)
+            using (AutorizationForm AForm = new AutorizationForm())
             {
-                // TODO: данная строка кода позволяет загрузить данные в таблицу "biblioBDDataSet.Knigi". При необходимости она может быть перемещена или удалена.
-                this.knigiTableAdapter.Fill(this.biblioBDDataSet.Knigi);
-                // TODO: данная строка кода позволяет загрузить данные в таблицу "biblioBDDataSet.BiblioKart". При необходимости она может быть перемещена или удалена.
-                this.biblioKartTableAdapter.Fill(this.biblioBDDataSet.BiblioKart);
-                // TODO: данная строка кода позволяет загрузить данные в таблицу "biblioBDDataSet.Ucheniki". При необходимости она может быть перемещена или удалена.
-                this.uchenikiTableAdapter.Fill(this.biblioBDDataSet.Ucheniki);
-                this.biblioKartDataGridView.DataError += new DataGridViewDataErrorEventHandler(BBL_DataError);
-                Savebttn.Enabled = true;
-                button1.Enabled = true;
-                регистрацияToolStripMenuItem.Enabled = true;
-                инструментыToolStripMenuItem.Enabled = true;
-                авторизацияToolStripMenuItem.Enabled = false;
-                if(toolStripStatusLabel3.Text == "Admin")
-                {
-                    очиститьТаблицуToolStripMenuItem.Enabled = true;
-                }
+                AForm.Owner = this;
+                AForm.ShowDialog();
             }
             if (StatusLabl.Text == "StatusLable")
             {
@@ -61,25 +48,49 @@ namespace Biblioteka
             AddUchForm = new AddUchenikForm();
             AddUchForm.ShowDialog();
         }
-
+        private void AllFill()
+        {
+            this.knigiTableAdapter.Fill(this.biblioBDDataSet.Knigi);
+            this.biblioKartTableAdapter.Fill(this.biblioBDDataSet.BiblioKart);
+            this.uchenikiTableAdapter.Fill(this.biblioBDDataSet.Ucheniki);
+            this.biblioKartDataGridView.DataError += new DataGridViewDataErrorEventHandler(BBL_DataError);
+            this.uchenikiTableAdapter.Fill(this.biblioBDDataSet.Ucheniki);
+            this.knigiTableAdapter.Fill(this.biblioBDDataSet.Knigi);
+        }
         private void Form1_Activated(object sender, EventArgs e)
         {
             if (autorizationFlag == true)
-            { 
-                this.knigiTableAdapter.Fill(this.biblioBDDataSet.Knigi);
-                this.biblioKartTableAdapter.Fill(this.biblioBDDataSet.BiblioKart);
-                this.uchenikiTableAdapter.Fill(this.biblioBDDataSet.Ucheniki);
-                this.biblioKartDataGridView.DataError += new DataGridViewDataErrorEventHandler(BBL_DataError);
-                Savebttn.Enabled = true;
-                this.uchenikiTableAdapter.Fill(this.biblioBDDataSet.Ucheniki);
-                this.knigiTableAdapter.Fill(this.biblioBDDataSet.Knigi);
-                button1.Enabled = true;
-                регистрацияToolStripMenuItem.Enabled = true;
-                инструментыToolStripMenuItem.Enabled = true;
-                авторизацияToolStripMenuItem.Enabled = false;
-                if (toolStripStatusLabel3.Text == "Admin")
+            {
+                if (TypeOfAccount == 2)
                 {
+                    AllFill();
+                    Savebttn.Enabled = true;
+                    button1.Enabled = true;
+                    регистрацияToolStripMenuItem.Enabled = true;
+                    инструментыToolStripMenuItem.Enabled = true;
+                    авторизацияToolStripMenuItem.Enabled = false;
+                    отладкаToolStripMenuItem.Enabled = true;
                     очиститьТаблицуToolStripMenuItem.Enabled = true;
+                    экспортToolStripMenuItem.Enabled = true;
+                    добавитьУченикаToolStripMenuItem.Enabled = true;
+                    toolStripStatusLabel5.Text += "Администратор";
+                }
+                if(TypeOfAccount == 0)
+                {
+                    AllFill();
+                    Savebttn.Enabled = true;
+                    button1.Enabled = true;
+                    регистрацияToolStripMenuItem.Enabled = true;
+                    инструментыToolStripMenuItem.Enabled = true;
+                    авторизацияToolStripMenuItem.Enabled = false;
+                    отладкаToolStripMenuItem.Enabled = true;
+                    экспортToolStripMenuItem.Enabled = true;
+                    добавитьУченикаToolStripMenuItem.Enabled = true;
+                    toolStripStatusLabel5.Text += "Библиотекарь";
+                }
+                if(TypeOfAccount == 1)
+                {
+
                 }
             }
            
@@ -311,6 +322,7 @@ namespace Biblioteka
         private void регистрацияToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RegistrarionForm RegFRm = new RegistrarionForm();
+            RegFRm.Owner = this;
             RegFRm.ShowDialog();
             RegFRm.StartPosition = FormStartPosition.CenterScreen;
         }

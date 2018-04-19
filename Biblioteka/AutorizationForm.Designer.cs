@@ -140,6 +140,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AutorizationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.AutorizationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.autorizBS)).EndInit();
