@@ -30,10 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.BKBS = new System.Windows.Forms.BindingSource(this.components);
+            this.nppDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDUchenikaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDKnigiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.KnigiBS = new System.Windows.Forms.BindingSource(this.components);
             this.biblioBDDataSet = new Biblioteka.BiblioBDDataSet();
+            this.dataVzyalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataSdalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kolVoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.BKBS = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
@@ -42,29 +53,18 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.KnigiBS = new System.Windows.Forms.BindingSource(this.components);
             this.knigiTableAdapter = new Biblioteka.BiblioBDDataSetTableAdapters.KnigiTableAdapter();
             this.biblioKartTableAdapter = new Biblioteka.BiblioBDDataSetTableAdapters.BiblioKartTableAdapter();
             this.tableAdapterManager1 = new Biblioteka.BiblioBDDataSetTableAdapters.TableAdapterManager();
-            this.nppDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDUchenikaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDKnigiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataVzyalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataSdalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kolVoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BKBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KnigiBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BKBS)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KnigiBS)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -81,6 +81,34 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Главное меню";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Location = new System.Drawing.Point(220, 30);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(312, 199);
+            this.groupBox4.TabIndex = 4;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Статус:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 17);
+            this.label4.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(440, 235);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(98, 32);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Обновить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox3
             // 
@@ -111,15 +139,83 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // BKBS
+            // nppDataGridViewTextBoxColumn
             // 
-            this.BKBS.DataMember = "BiblioKart";
-            this.BKBS.DataSource = this.biblioBDDataSet;
+            this.nppDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nppDataGridViewTextBoxColumn.DataPropertyName = "Npp";
+            this.nppDataGridViewTextBoxColumn.HeaderText = "№ п/п";
+            this.nppDataGridViewTextBoxColumn.Name = "nppDataGridViewTextBoxColumn";
+            this.nppDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // iDUchenikaDataGridViewTextBoxColumn
+            // 
+            this.iDUchenikaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.iDUchenikaDataGridViewTextBoxColumn.DataPropertyName = "ID_Uchenika";
+            this.iDUchenikaDataGridViewTextBoxColumn.HeaderText = "№ Ученика";
+            this.iDUchenikaDataGridViewTextBoxColumn.Name = "iDUchenikaDataGridViewTextBoxColumn";
+            this.iDUchenikaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDUchenikaDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // iDKnigiDataGridViewTextBoxColumn
+            // 
+            this.iDKnigiDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.iDKnigiDataGridViewTextBoxColumn.DataPropertyName = "ID_Knigi";
+            this.iDKnigiDataGridViewTextBoxColumn.DataSource = this.KnigiBS;
+            this.iDKnigiDataGridViewTextBoxColumn.DisplayMember = "Name";
+            this.iDKnigiDataGridViewTextBoxColumn.HeaderText = "Книга";
+            this.iDKnigiDataGridViewTextBoxColumn.Name = "iDKnigiDataGridViewTextBoxColumn";
+            this.iDKnigiDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDKnigiDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.iDKnigiDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.iDKnigiDataGridViewTextBoxColumn.ValueMember = "ID_Knigi";
+            // 
+            // KnigiBS
+            // 
+            this.KnigiBS.DataMember = "Knigi";
+            this.KnigiBS.DataSource = this.biblioBDDataSet;
             // 
             // biblioBDDataSet
             // 
             this.biblioBDDataSet.DataSetName = "BiblioBDDataSet";
             this.biblioBDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataVzyalDataGridViewTextBoxColumn
+            // 
+            this.dataVzyalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataVzyalDataGridViewTextBoxColumn.DataPropertyName = "Data_Vzyal";
+            this.dataVzyalDataGridViewTextBoxColumn.HeaderText = "Когда взял";
+            this.dataVzyalDataGridViewTextBoxColumn.Name = "dataVzyalDataGridViewTextBoxColumn";
+            this.dataVzyalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataSdalDataGridViewTextBoxColumn
+            // 
+            this.dataSdalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataSdalDataGridViewTextBoxColumn.DataPropertyName = "Data_Sdal";
+            this.dataSdalDataGridViewTextBoxColumn.HeaderText = "Когда нужно сдавать";
+            this.dataSdalDataGridViewTextBoxColumn.Name = "dataSdalDataGridViewTextBoxColumn";
+            this.dataSdalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // kolVoDataGridViewTextBoxColumn
+            // 
+            this.kolVoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.kolVoDataGridViewTextBoxColumn.DataPropertyName = "Kol_Vo";
+            this.kolVoDataGridViewTextBoxColumn.HeaderText = "Количество";
+            this.kolVoDataGridViewTextBoxColumn.Name = "kolVoDataGridViewTextBoxColumn";
+            this.kolVoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusDataGridViewCheckBoxColumn
+            // 
+            this.statusDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewCheckBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
+            this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.statusDataGridViewCheckBoxColumn.Visible = false;
+            // 
+            // BKBS
+            // 
+            this.BKBS.DataMember = "BiblioKart";
+            this.BKBS.DataSource = this.biblioBDDataSet;
             // 
             // groupBox2
             // 
@@ -220,11 +316,6 @@
             this.comboBox1.TabIndex = 0;
             this.comboBox1.ValueMember = "ID_Knigi";
             // 
-            // KnigiBS
-            // 
-            this.KnigiBS.DataMember = "Knigi";
-            this.KnigiBS.DataSource = this.biblioBDDataSet;
-            // 
             // knigiTableAdapter
             // 
             this.knigiTableAdapter.ClearBeforeFill = true;
@@ -243,98 +334,6 @@
             this.tableAdapterManager1.UpdateOrder = Biblioteka.BiblioBDDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager1.ZakazTableAdapter = null;
             // 
-            // nppDataGridViewTextBoxColumn
-            // 
-            this.nppDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nppDataGridViewTextBoxColumn.DataPropertyName = "Npp";
-            this.nppDataGridViewTextBoxColumn.HeaderText = "№ п/п";
-            this.nppDataGridViewTextBoxColumn.Name = "nppDataGridViewTextBoxColumn";
-            this.nppDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iDUchenikaDataGridViewTextBoxColumn
-            // 
-            this.iDUchenikaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.iDUchenikaDataGridViewTextBoxColumn.DataPropertyName = "ID_Uchenika";
-            this.iDUchenikaDataGridViewTextBoxColumn.HeaderText = "№ Ученика";
-            this.iDUchenikaDataGridViewTextBoxColumn.Name = "iDUchenikaDataGridViewTextBoxColumn";
-            this.iDUchenikaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDUchenikaDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // iDKnigiDataGridViewTextBoxColumn
-            // 
-            this.iDKnigiDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.iDKnigiDataGridViewTextBoxColumn.DataPropertyName = "ID_Knigi";
-            this.iDKnigiDataGridViewTextBoxColumn.DataSource = this.KnigiBS;
-            this.iDKnigiDataGridViewTextBoxColumn.DisplayMember = "Name";
-            this.iDKnigiDataGridViewTextBoxColumn.HeaderText = "Книга";
-            this.iDKnigiDataGridViewTextBoxColumn.Name = "iDKnigiDataGridViewTextBoxColumn";
-            this.iDKnigiDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDKnigiDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.iDKnigiDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.iDKnigiDataGridViewTextBoxColumn.ValueMember = "ID_Knigi";
-            // 
-            // dataVzyalDataGridViewTextBoxColumn
-            // 
-            this.dataVzyalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataVzyalDataGridViewTextBoxColumn.DataPropertyName = "Data_Vzyal";
-            this.dataVzyalDataGridViewTextBoxColumn.HeaderText = "Когда взял";
-            this.dataVzyalDataGridViewTextBoxColumn.Name = "dataVzyalDataGridViewTextBoxColumn";
-            this.dataVzyalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataSdalDataGridViewTextBoxColumn
-            // 
-            this.dataSdalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataSdalDataGridViewTextBoxColumn.DataPropertyName = "Data_Sdal";
-            this.dataSdalDataGridViewTextBoxColumn.HeaderText = "Когда нужно сдавать";
-            this.dataSdalDataGridViewTextBoxColumn.Name = "dataSdalDataGridViewTextBoxColumn";
-            this.dataSdalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // kolVoDataGridViewTextBoxColumn
-            // 
-            this.kolVoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.kolVoDataGridViewTextBoxColumn.DataPropertyName = "Kol_Vo";
-            this.kolVoDataGridViewTextBoxColumn.HeaderText = "Количество";
-            this.kolVoDataGridViewTextBoxColumn.Name = "kolVoDataGridViewTextBoxColumn";
-            this.kolVoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusDataGridViewCheckBoxColumn
-            // 
-            this.statusDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewCheckBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
-            this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.statusDataGridViewCheckBoxColumn.Visible = false;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(440, 235);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 32);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Обновить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Location = new System.Drawing.Point(220, 30);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(312, 199);
-            this.groupBox4.TabIndex = 4;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Статус:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 48);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "StatusLable";
-            // 
             // uchenikForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -348,16 +347,16 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.uchenikForm_FormClosing);
             this.Load += new System.EventHandler(this.uchenikForm_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BKBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KnigiBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.biblioBDDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BKBS)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KnigiBS)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
